@@ -1,3 +1,36 @@
+# rpi-pony
+
+Raspberry Pi compatible Docker base image with Pony compiler preinstalled.
+
+Run all the commands from within the project root directory.
+
+### Build Details
+- [Source Project Page](https://github.com/lispmeister)
+- [Source Repository](https://github.com/lispmeister/rpi-pony)
+- [Dockerfile](https://github.com/lispmeister/rpi-pony/blob/master/Dockerfile)
+- [DockerHub] (https://registry.hub.docker.com/u/lispmeister/rpi-pony/)
+
+
+#### Build the Docker Image
+```bash
+make build
+```
+
+#### Run the Docker Image and get the version of the installed Pony compiler
+```bash
+make version
+```
+
+#### Push the Docker Image to the Docker Hub
+* First use a `docker login` with username, password and email address
+* Second push the Docker Image to the official Docker Hub
+
+```bash
+make push
+```
+
+## License
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Markus Fix
