@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Prepare build dir
-RUN mkdir -p /data/pony
+mkdir -p /data/pony
 
 # Build PCRE2
 cd /data/pony
