@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
         libtool build-essential \
         libncurses5 libncurses5-dev \
         xz-utils \
+        git \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
