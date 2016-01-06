@@ -3,14 +3,17 @@
 # Prepare build dir
 mkdir -p /data/pony
 
+# disable SSL verification for Git (don't ask)
+#export GIT_SSL_NO_VERIFY=1
+
 # Build PCRE2
 cd /data/pony
-git clone https://github.com/luvit/pcre2 \
+git clone https://github.com/luvit/pcre2
 cd /data/pony/pcre2
 touch NEWS AUTHORS
 autoreconf -i
 ./configure
-make
+make -j4
 make install
 
 # Build LLVM 3.6
@@ -30,5 +33,5 @@ make -j4
 make test
 make install
 
-# Cleanup
-#rm -rf /data/pony
+Cleanup
+rm -rf /data/pony
