@@ -43,6 +43,7 @@ WORKDIR ponyc
 
 # switch to build tag
 RUN git checkout $PONY_TAG
+RUN git pull
 
 # fix paths
 ENV LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
@@ -51,7 +52,7 @@ ENV PATH="/data/pony/clang+llvm-3.6.2-armv7a-linux-gnueabihf/bin:$PATH"
 
 # build pony
 RUN make -j4
-RUN make test
+RUN make -j4 test
 RUN make install
 
 # cleanup

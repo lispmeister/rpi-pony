@@ -17,8 +17,18 @@ test:
 version:
 	docker run --rm $(DOCKER_IMAGE_TAGNAME) ponyc --version
 
+
 clean:
-	docker rm -v $(docker ps -a -q -f status=exited)
-	docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
-	docker rmi $(docker images -f "dangling=true" -q)
+exited := $(shell docker ps -a -q -f status=exited)
+untagged := $(shell docker images | grep "^<none>" | awk -F " " '{print $3}')
+dangling := $(shell docker images -f "dangling=true" -q)
+ifneq ($(strip $(exited)),)
+	docker rm -v $()
+endif
+ifneq ($(strip $(untagged)),)
+	docker rmi $(untagged)
+endif
+ifneq ($(strip $(dangling)),)
+	docker rmi $(dangling)
+endif
 
