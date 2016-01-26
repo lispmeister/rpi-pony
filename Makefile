@@ -1,4 +1,4 @@
-DOCKER_IMAGE_VERSION=0.0.1
+DOCKER_IMAGE_VERSION=0.0.2
 DOCKER_IMAGE_NAME=lispmeister/rpi-pony
 DOCKER_IMAGE_TAGNAME=$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_VERSION)
 
@@ -16,3 +16,9 @@ test:
 
 version:
 	docker run --rm $(DOCKER_IMAGE_TAGNAME) ponyc --version
+
+clean:
+	docker rm -v $(docker ps -a -q -f status=exited)
+	docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+	docker rmi $(docker images -f "dangling=true" -q)
+
