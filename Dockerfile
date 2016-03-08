@@ -2,7 +2,6 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER Markus Fix <lispmeister@gmail.com>
 
-ENV PONY_TAG='master'
 
 # Install build tools
 RUN apt-get update
@@ -42,6 +41,7 @@ RUN git clone https://github.com/Sendence/ponyc.git
 WORKDIR ponyc
 
 # switch to build tag
+ENV PONY_TAG='sendence-0.1.1'
 RUN git checkout $PONY_TAG
 RUN git pull
 
