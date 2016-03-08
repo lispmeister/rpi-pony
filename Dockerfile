@@ -38,7 +38,7 @@ RUN tar xvf clang+llvm-3.6.2-armv7a-linux-gnueabihf.tar
 
 # checkout pony project
 WORKDIR /data/pony
-RUN git clone https://github.com/CausalityLtd/ponyc.git
+RUN git clone https://github.com/Sendence/ponyc.git
 WORKDIR ponyc
 
 # switch to build tag
